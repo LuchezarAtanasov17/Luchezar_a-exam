@@ -32,7 +32,10 @@ jobs:
       run: npm run test:unit
     - name: Display SoftUni username
       run: echo "Luchezar_a"
-
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
     - name: Deploy to production
       uses: johnbeynon/render-deploy-action@v0.0.8
       with:
