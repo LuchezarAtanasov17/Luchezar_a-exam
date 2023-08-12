@@ -26,6 +26,15 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm install
-    - run: npm run test:unit
-    - run: echo "Luchezar_a"
+    - name: Installing NPM
+      run: npm install
+    - name: Run Unit Tests
+      run: npm run test:unit
+    - name: Display SoftUni username
+      run: echo "Luchezar_a"
+
+    - name: Deploy to production
+      uses: johnbeynon/render-deploy-action@v0.0.8
+      with:
+        service-id: ${{ secrets.SERVICE_ID }}
+        api-key: ${{ secrets.API_KEY }}
